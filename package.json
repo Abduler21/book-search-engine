@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Abduler21/book-search-engine#readme",
   "dependencies": {
+    "apollo-server-express": "^3.6.6",
     "express": "^4.17.3"
   }
 }
