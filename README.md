@@ -17,7 +17,7 @@ This assignment includes:
 - [Screenshot](#Screen) 
 - [Deployed Application](#Deployed)
 - [License](#MIT)
-- [Contact](#Contact)
+
 
 ## Core Objectives Met
 
@@ -58,11 +58,9 @@ This assignment includes:
 
 ## Screenshot
 
-![Google Book Search Engine](./client/src/assets/Google_Book_Search_Demo.gif)
 
-## Deployed Application
 
-https://google-book-search-cailin.herokuapp.com/
+
 
 ## MIT License
 &copy;2021 Cailin Bell Wold
@@ -85,6 +83,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Contact
-For inquiries, please contact [Cailin Bell Wold](https://github.com/CailinBellWold).
+
 
