@@ -1,19 +1,21 @@
 import { gql } from '@apollo/client';
 
-export const GET_ME = gql`
+//TODO add pageCount and publishedDate to savedBooks
+export const QUERY_ME = gql`
   {
     me {
       _id
       username
       email
-      bookCount
       savedBooks {
         bookId
         authors
+        image
         description
         title
-        image
         link
+        pageCount
+        publishedDate
       }
     }
   }

@@ -1,87 +1,47 @@
-# 20 MERN: Book Search Engine
-[![License: MIT](https://img.shields.io/github/license/CailinBellWold/Book-Search-Engine?style=plastic)](https://opensource.org/licenses/MIT)
+# Challenge 21: MERN: Book-Browser
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Description
+  ## Description
+  
+  * Scenario: It’s day 1 of your developer job, and the book search page is fully functioning. The lead has asked you to include the page count and published date of each book result. It should save to mongodb, so that the saved books can also render this page count and published date. The end result should allow users to search for books, which will display the book title, author, description, page count, date published, and allow users to save any books they desire. When viewing the "See Your Books" page, all of the books that the user saved should be shown there, as well as all of the pieces of information that were listed above.
 
-Refactor a fully functioning Google Books API search engine built with a RESTful API as a GraphQL API built with Apollo Server. The original app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It was already set up to allow users to save book searches to the back end.
+  ## Table of Contents
 
-This assignment includes:
-1. Setting up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API,
-2. Modify the existing authentication middleware so that it works in the context of a GraphQL API,
-3. Creating an Apollo Provider so that requests can communicate with an Apollo Server, and
-4. Deploying the application to Heroku with a MongoDB database using MongoDB Atlas.
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Contributing](#contributing)
+  * [License Info](#license-info)
 
-## Table of Contents
-- [Core Objectives Met](#Core)
-- [Technologies Utilized](#Technologies)
-- [Screenshot](#Screen) 
-- [Deployed Application](#Deployed)
-- [License](#MIT)
+  ## Screenshot of Deployed Application
 
+  ![](https://www.dropbox.com/s/ktqtdo3fi157yfn/Book-Browser.png?raw=1)
 
-## Core Objectives Met
+  ## Link to Deployed Application
 
-1. When the search engine loads, the user is presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button.
-2. When a user clicks on the Search for Books menu option, they are presented with an input field to search for books and a submit button. 
-3. When a user is not logged in and enters a search term in the input field, then clicks the submit button, they are presented with several search results, each featuring a book’s title, author, description, image, and a link to that book on the Google Books site.
-4. When a navigation title is clicked, the user is presented with the corresponding section below the navigation without the page reloading and that title is highlighted.
-5. When a user clicks on the Login/Signup menu option, a modal appears on the screen with a toggle between the option to log in or sign up.
-6. When the toggle is set to Signup, then the user is presented with three inputs for a username, an email address, and a password, and a signup button.
-7. When the toggle is set to Login, the user is presented with two inputs for an email address and a password and login button.
-8. When a user enters a valid email address, creates a password and clicks on the signup button, then their user account is created and they are logged in to the site.
-9. When a user enters their account’s email address and password and clicks on the login button, the modal closes and they are logged in to the site.
-10. When a user is logged in to the site, then the menu options change to Search for Books, an option to see their saved books, and Logout.
-11. When a user is logged in and enters a search term in the input field and clicks the submit button, then they are presented with several search results, each featuring a book’s title, author, description, image, and a link to that book on the Google Books site and a button to save a book to their account.
-12. When a user clicks the Save button on a book, then that book’s information is saved to their account.
-13. When a user clicks on the option to see their saved books, then they are presented with all of the books they have saved to their account, each featuring the book’s title, author, description, image, and a link to that book on the Google Books site and a button to remove a book from their account.
-14. When a user clicks on the Remove button on a book, then that book is deleted from their saved books list.
-15. When a user clicks on the Logout button, then they are logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button.
+  * https://tranquil-taiga-08957.herokuapp.com/ 
 
-## Technologies Utilized
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-- [Heroku](https://www.heroku.com)
-- [NPM Apollo Client Package](https://www.npmjs.com/package/stripe)
-- [NPM Apollo-Server-Express Package](https://www.npmjs.com/package/apollo-server-express)
-- [NPM GraphQL Package](https://www.npmjs.com/package/graphql)
-- [NPM Bcrypt Package](https://www.npmjs.com/package/bcrypt)
-- [NPM Express.js Package](https://www.npmjs.com/package/express)
-- [NPM JSONWebToken](https://www.npmjs.com/package/jsonwebtoken)
-- [NPM Mongoose Package](https://www.npmjs.com/package/mongoose)
-- [Node.js](https://nodejs.org/en/)
-- [NPM nodemon Package](https://www.npmjs.com/package/nodemon)
-- [NPM JWT-Decode Package](https://www.npmjs.com/package/jwt-decode)
-- [NPM React Package](https://www.npmjs.com/package/react)
-- [NPM React-Bootstrap](https://www.npmjs.com/package/react-bootstrap)
-- [React-Dom](https://www.npmjs.com/package/react-dom)
-- [React-Router-Dom](https://www.npmjs.com/package/react-router-dom)
-- [React-Scripts](https://www.npmjs.com/package/react-scripts)
+  ### Installation
+  
+  * None
 
-## Screenshot
+  ### Usage
 
+  * Just visit the deployed link to access the website, then search for any books that you want and save any of the books from the search results that you choose to. Then, you will be able to view your collection of saved books on the "See Your Books" page.
 
+  ### License Info
+  * [MIT License](https://opensource.org/licenses/MIT)
+  * A short, permissive software license. Basically, you can do whatever you want as long as you include the original copyright and license notice in any copy of the software/source.  There are many variations of this license in use.
+  
+  ### Contributing
 
+  * [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
+  ### Tests
 
-## MIT License
-&copy;2021 Cailin Bell Wold
+  * N/A
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+  ### Further Questions?
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+  * Link to GitHub: https://github.com/nickperel
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-
+  * If you have further questions, feel free to email me at this address & I will get back to you as soon as I can: nickperel@live.com

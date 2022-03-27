@@ -1,14 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-  mutation login(
-    $email: String!
-    $password: String!
-  ) {
-    login(
-      email: $email
-      password: $password
-    ) {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
       user {
         _id
@@ -19,53 +13,40 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser(
-    $username: String!
-    $email: String!
-    $password: String!
-  ) {
-    addUser(
-      username: $username
-      email: $email
-      password: $password
-    ) {
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
         username
-        email
-        bookCount
-        savedBooks {
-          authors
-          bookId
-          image
-          link
-          title
-          description
-        }
       }
     }
   }
 `;
 
+
+//TODO add the pageCount and publishedDate to the savedBooks query
 export const SAVE_BOOK = gql`
-  mutation saveBook($newBook: InputBook!) {
-    saveBook(newBook: $newBook) {
+  mutation saveBook($bookData: BookInput!) {
+    saveBook(bookData: $bookData) {
       _id
       username
       email
       savedBooks {
         bookId
         authors
+        image
         description
         title
-        image
         link
+        pageCount
+        publishedDate
       }
     }
   }
 `;
 
+//TODO add the pageCount and publishedDate to the savedBooks query
 export const REMOVE_BOOK = gql`
   mutation removeBook($bookId: ID!) {
     removeBook(bookId: $bookId) {
@@ -75,10 +56,12 @@ export const REMOVE_BOOK = gql`
       savedBooks {
         bookId
         authors
+        image
         description
         title
-        image
         link
+        pageCount
+        publishedDate  
       }
     }
   }
