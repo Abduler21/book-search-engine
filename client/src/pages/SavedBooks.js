@@ -1,54 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
+import Auth from '../utils/auth';
+import { removeBookId } from '../utils/localStorage';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_ME } from '../utils/queries';
+import { REMOVE_BOOK } from '../utils/mutations';
 
-// import getSavedBooks and deleteBook from API file
-import * as API from '../utils/API';
+const SavedBooks = () => {
+  const { loading, data } = useQuery(GET_ME);
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+  const userData = data?.me || {};
 
-function SavedBooks() {
-    // create state for our saved books array coming from our API
-    const [savedBooks, setSavedBooks] = useState([]);
+  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+  const handleDeleteBook = async (bookId) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    useEffect(() => {
-        getBooks();
-    }, []);
+    if (!token) {
+      return false;
+    }
 
-    // create function to run getSavedBooks and save our saved books from the DB to state
-    const getBooks = () => {
-        API.getSavedBooks()
-            .then(({ data }) => setSavedBooks(data))
-            .catch((err) => console.log(err));
-    };
+    try {
+      const { data } = await removeBook({
+        variables: { bookId },
+      });
 
-    // create function that accepts the book's mongo _id value as param and deletes the book from the database
-    const handleDeleteBook = (mongoId) => {
-        API.deleteBook(mongoId)
-            .then(() => getBooks())
-            .catch((err) => console.log(err));
-    };
+      removeBookId(bookId);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    return (
-        <>
-            <Container fluid>
-                <h2>{savedBooks.length ? `Saved Books:` : 'You have no saved books!'}</h2>
-                <CardColumns>
-                    {savedBooks.map((book) => {
-                        return (
-                            <Card key={book._id} border='dark'>
-                                {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
-                                <Card.Body>
-                                    <Card.Title>{book.title}</Card.Title>
-                                    <p className='small'>Authors: {book.authors}</p>
-                                    <Card.Text>{book.description}</Card.Text>
-                                    <Button className='delete-btn' variant="danger" size="sm" onClick={() => handleDeleteBook(book._id)}>Delete</Button>
-                                    <Button className='view-btn' variant="success" size="sm" style={{margin: "10px"}}>View Book</Button>
-                                </Card.Body>
-                            </Card>
-                        );
-                    })}
-                </CardColumns>
-            </Container>
-        </>
-    );
-}
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+
+  return (
+    <>
+      <Jumbotron fluid className='text-light bg-dark'>
+        <Container>
+          <h1>Viewing saved books!</h1>
+        </Container>
+      </Jumbotron>
+      <Container>
+        <h2>
+          {userData.savedBooks.length
+            ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
+            : 'You have no saved books!'}
+        </h2>
+        <CardColumns>
+          {userData.savedBooks.map((book) => {
+            return (
+              <Card key={book.bookId} border='dark'>
+                {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
+                <Card.Body>
+                  <Card.Title>{book.title}</Card.Title>
+                  <p className='small'>Authors: {book.authors}</p>
+                  <Card.Text>{book.description}</Card.Text>
+                  <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
+                    Delete this Book!
+                  </Button>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
+      </Container>
+    </>
+  );
+};
 
 export default SavedBooks;
